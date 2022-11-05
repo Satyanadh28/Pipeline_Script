@@ -4,7 +4,7 @@ pipeline {
 	
 	stage('Non-Parallel Stage') {
 	    agent {
-                        label "Built-In Node"
+                        label "master"
                 }
         steps {
                 echo 'This stage will be executed first'
@@ -14,12 +14,12 @@ pipeline {
 	
         stage('Run Tests') {
             parallel {
-                stage('Test On Built-In Node') {
+                stage('Test On master') {
                     agent {
-                        label "Built-In Node"
+                        label "master"
                     }
                     steps {
-						echo "Task1 on Built-In Node"
+						echo "Task1 on master"
 					}
                 }
             }
